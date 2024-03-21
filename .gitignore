@@ -3,8 +3,6 @@
 **/atril/
 **/gtk-3.0
 **/libreoffice
-**/i3
-**/nvim
 **/*.conf
 **/xfce4
 **/*.locale
@@ -13,3 +11,14 @@
 **/pulse
 **/*.dirs
 **/github-copilot/
+**/Code/
+.gsd-keyboard.settings-ported
+**/enchant/
+**/*.list
+**/eog/
+**/evolution/
+**/gh/
+gnome-initial-setup-done
+**/systemd/
+**/yelp/
+
