@@ -11,13 +11,14 @@
 **/*.dirs
 **/github-copilot/
 **/Code/
-.gsd-keyboard.settings-ported
 **/enchant/
 **/*.list
 **/eog/
 **/evolution/
 **/gh/
-gnome-initial-setup-done
 **/systemd/
 **/yelp/
-
+**/jgit/
+**/xfburn/
+gnome-initial-setup-done
+.gsd-keyboard.settings-ported
