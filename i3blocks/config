@@ -5,15 +5,9 @@ separator_block_width=20
 command=xdotool getwindowfocus getwindowname
 interval=1
 
-
 [funky]
 full_text=<span foreground= "#8EBABF"size="large">Freelipe Kapudo Pc </span> 
 markup=pango
-
-[sound]
-label=🔊: 
-command=amixer sget Master | awk -F"[][]" '/Right:/ { print $2 }'
-interval=-2
 
 [music]
 label=📻: 
@@ -25,12 +19,15 @@ label=💾:
 command=iostat -c | sed '4q;d' | awk '{ print 100 - $6 "%" }'
 interval=5
 
-[memory]
-label=🧠: 
-command=free -mh --si | awk '/^Mem:/ { print $3 "/" $2 }'
-interval=5
+[battery]
+#label=BAT
+command=acpi
+label=⚡
+instance=0
+interval=2
 
 [date]
 label=📅: 
 command=date '+%d-%m-%Y   %H:%M:%S'
 interval=1
+

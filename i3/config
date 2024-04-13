@@ -17,7 +17,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
 # monitors
-exec --no-startup-id xrandr --auto --output HDMI-1 --mode 1366x768 --left-of VGA-1
+exec --no-startup-id autorandr --load main 
 
 # gnome settings
 exec --no-startup-id /usr/lib/gsd-xsettings
