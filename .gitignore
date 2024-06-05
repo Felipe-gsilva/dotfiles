@@ -11,17 +11,22 @@
 **/*.dirs
 **/github-copilot/
 **/Code/
-.gsd-keyboard.settings-ported
 **/enchant/
 **/*.list
 **/eog/
 **/evolution/
 **/gh/
-gnome-initial-setup-done
 **/systemd/
 **/yelp/
+<<<<<<< HEAD
 autorandr/
 compiz-1/
 configstore/
 ibus/
 jgit/
+=======
+**/jgit/
+**/xfburn/
+gnome-initial-setup-done
+.gsd-keyboard.settings-ported
+>>>>>>> refs/remotes/origin/main
