@@ -8,7 +8,7 @@ set $alt Mod1
 
 # fonts
 font pango:Fantasque Sans Mono 8
-font pango:FontAwesome 9
+  font pango:FontAwesome 9
 
 # set display scaling
 exec --no-startup-id xrdb ~/.Xresources
@@ -17,7 +17,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
 # monitors
-exec --no-startup-id xrandr --auto --output HDMI-1 --mode 1366x768 --left-of VGA-1
+exec --no-startup-id xrandr --auto --output HDMI-1 --mode 1920x1080 --rate 144.00
 
 # gnome settings
 exec --no-startup-id /usr/lib/gsd-xsettings
@@ -39,7 +39,7 @@ bindsym $mod+Return exec alacritty
 bindsym $alt+Control+t exec alacritty
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+q kill 
 
 # kill alt f4
 bindsym $alt+F4 kill

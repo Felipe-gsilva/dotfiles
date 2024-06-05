@@ -20,4 +20,8 @@
 gnome-initial-setup-done
 **/systemd/
 **/yelp/
-
+autorandr/
+compiz-1/
+configstore/
+ibus/
+jgit/

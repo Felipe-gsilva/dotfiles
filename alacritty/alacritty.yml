@@ -4,7 +4,7 @@ env:
 window:
   dynamic_padding: false
   padding:
-    x: 14 
+    x: 14
     y: 14 
   class:
     instance: Alacritty
@@ -21,7 +21,7 @@ font:
   normal: 
     family: Bitstromwera Nerd Font
     style: medium
-  size: 9.5  
+  size: 10  
 
 colors: 
   primary: 
