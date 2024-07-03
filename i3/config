@@ -7,8 +7,8 @@ set $mod Mod4
 set $alt Mod1 
 
 # fonts
-font pango:Fantasque Sans Mono 8
-  font pango:FontAwesome 9
+font pango:Bitstromwera Nerd Font 8
+font pango:FontAwesome 9
 
 # set display scaling
 exec --no-startup-id xrdb ~/.Xresources
@@ -17,7 +17,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
 # monitors
-exec --no-startup-id xrandr --auto --output HDMI-1 --mode 1920x1080 --rate 144.00
+exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --rate 144.00
 
 # gnome settings
 exec --no-startup-id /usr/lib/gsd-xsettings
@@ -28,11 +28,16 @@ exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.jpg
 # night light
 exec --no-startup-id nightshift -l -20:-50
 
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # set window transparency
 exec --no-startup-id picom 
+
+# start clipmenud
+exec clipmenud
 
 # start a terminal
 bindsym $mod+Return exec alacritty 
@@ -45,8 +50,11 @@ bindsym $mod+q kill
 bindsym $alt+F4 kill
 
 # start rofi
-bindsym $mod+d exec rofi -show drun -font "Fantasque Sans Mono 10" -show-icons -icon-theme "Papirus"  -lines 10 -width 40 -padding 50 -hide-scrollbar
+bindsym $mod+d exec rofi -show drun -font "Bitstromwera Nerd Font 10" -show-icons -icon-theme "Papirus"  -lines 10 -width 40 -padding 50 -hide-scrollbar
 bindsym $mod+Shift+d exec rofi -show run
+
+#clipmenu
+bindsym $mod+shift+v exec clipmenu -i -fn Terminus:size=10 -nb '#1A1826' -nf '#839496' -sb '#100E17' -sf '#93a1a1'
 
 # change focus
 bindsym $mod+h focus left
@@ -129,9 +137,13 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+
 # set sound control on fn keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute
+
+#set volume control 
+bindsym $mod+Shift+s exec --no-startup-id pavucontrol
 
 # set wifi control
 bindsym $mod+Shift+w exec --no-startup-id nm-connection-editor

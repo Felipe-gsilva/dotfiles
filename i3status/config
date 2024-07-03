@@ -48,19 +48,6 @@ ethernet _first_ {
         format_down = "E: down"
 }
 
-# battery all {
-#         format = "%status %percentage"
-# }
-
-#battery 0 {
- #       format = "%status %percentage"
-  #      hide_seconds = true
-  #      integer_battery_capacity = true
-   #     last_full_capacity = true
-  #      status_chr = " +"
-  #      status_bat = ""
-  #      status_full = ""
-#}
 
 disk "/" {
         format = "%avail"

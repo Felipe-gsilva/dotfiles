@@ -18,15 +18,15 @@
 **/gh/
 **/systemd/
 **/yelp/
-<<<<<<< HEAD
 autorandr/
 compiz-1/
 configstore/
 ibus/
 jgit/
-=======
 **/jgit/
 **/xfburn/
 gnome-initial-setup-done
 .gsd-keyboard.settings-ported
->>>>>>> refs/remotes/origin/main
+spotify/
+discord/
+Notion/
