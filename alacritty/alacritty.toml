@@ -1,0 +1,41 @@
+live_config_reload = true
+
+[colors]
+  [colors.normal]
+  black = "#000000"
+  cyan = "#5BBFBF"
+  red = "#F7768E"
+  white = "#FFFFFF"
+
+  [colors.primary]
+  background = "#1A1826"
+  foreground = "#8EBABF"
+
+[cursor]
+  blink_interval = 150
+
+[env]
+  TERM = "xterm-256color"
+
+[font]
+  size = 10
+
+  [font.normal]
+  family = "Bitstromwera Nerd Font"
+  style = "Regular"
+
+[scrolling]
+  history = 10000
+  multiplier = 3
+
+[window]
+  dynamic_padding = false
+
+  [window.class]
+  general = "Alacritty"
+  instance = "Alacritty"
+
+  [window.padding]
+  x = 14
+  y = 14
+
