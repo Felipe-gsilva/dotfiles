@@ -45,10 +45,13 @@ if [[ -d "$HOME/.config" ]]; then
   ln -sf "$PWD/flameshot" "$HOME/.config/flameshot"
   ln -sf "$PWD/copyq" "$HOME/.config/copyq"
   ln -sf "$PWD/tmux" "$HOME/.config/tmux"
+  ln -sf "$PWD/spotify-player" "$HOME/.config/spotify-player"
+  ln -sf "$PWD/pulse" "$HOME/.config/pulse"
   echo "config files linked"
 else 
   echo "$HOME/.config directory does not exist, creating and linking config files"
   mkdir -p "$HOME/.config"
+  # Symlink all config files
   ln -sf "$PWD/nvim" "$HOME/.config/nvim"
   ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
   ln -sf "$PWD/.oh-my-zsh" "$HOME/.oh-my-zsh"
@@ -64,6 +67,10 @@ else
   ln -sf "$PWD/flameshot" "$HOME/.config/flameshot"
   ln -sf "$PWD/copyq" "$HOME/.config/copyq"
   ln -sf "$PWD/tmux" "$HOME/.config/tmux"
+  ln -sf "$PWD/spotify-player" "$HOME/.config/spotify-player"
+  ln -sf "$PWD/pulse" "$HOME/.config/pulse"
   echo "config files linked"
 fi
+
+
 
