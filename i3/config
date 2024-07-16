@@ -19,16 +19,8 @@ exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/
 # monitors
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --rate 144.00
 
-# gnome settings
-exec --no-startup-id /usr/lib/gsd-xsettings
-
 #set background
 exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.jpg 
-
-# night light
-exec --no-startup-id nightshift -l -20:-50
-
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -211,28 +203,9 @@ client.focused_inactive $fg    $bg     $fg  $white
 client.placeholder      $fg    $fg     $fg  $white
 client.urgent           $red   $red    $fg  $white
 
-# bar
-bar {
-  position top
-  status_command i3blocks
-  font pango:Fantasque Sans Mono 8
-  height 20
+# Starts polybar
+exec_always --no-startup-id $HOME/.config/polybar/launcher.sh
 
-  padding 5px 5px 0px 5px
-  tray_output none
-  strip_workspace_numbers yes
-  strip_workspace_name no
-  colors {
-    separator $bg
-    background $bg
-    statusline $fg 
-
-    # class                  border  backgr. text
-    focused_workspace         $bg     $bg     $fg
-    active_workspace          $bg     $bg     $fg
-    inactive_workspace        $bg     $bg     $fg
-    urgent_workspace          $bg     $bg     $fg
-    binding_mode              $bg     $bg     $fg
-    }
-  }
-
+# Always float certain windows
+for_window [class="Pavucontrol"] floating enable
+for_window [class="polybar"] border pixel 0
