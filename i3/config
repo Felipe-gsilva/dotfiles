@@ -20,7 +20,7 @@ exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/
 exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --rate 144.00
 
 #set background
-exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.jpg 
+exec --no-startup-id feh --bg-scale  /home/felipe-gsilva/.config/i3/bg.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
