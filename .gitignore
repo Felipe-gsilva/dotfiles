@@ -2,17 +2,14 @@
 **/atril/
 **/gtk-3.0
 **/libreoffice
-**/*.conf
 **/xfce4
 **/*.locale
 **/Thunar
 **/dconf
 **/pulse
-**/*.dirs
 **/github-copilot/
 **/Code/
 **/enchant/
-**/*.list
 **/eog/
 **/evolution/
 **/gh/
