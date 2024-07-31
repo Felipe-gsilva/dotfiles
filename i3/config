@@ -10,20 +10,17 @@ set $alt Mod1
 font pango:Bitstromwera Nerd Font 8
 font pango:FontAwesome 9
 
-# set display scaling
-exec --no-startup-id xrdb ~/.Xresources
-
-# set cpu performance mode
-exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
-# monitors
-exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --rate 144.00
-
-#set background
-exec --no-startup-id feh --bg-scale  /home/felipe-gsilva/.config/i3/bg.jpg
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# monitors
+exec --no-startup-id xrandr --output eDP --mode 1920x1080 
+
+# layout
+exec --no-startup-id setxkbmap br
+
+#set background
+exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.jpg
 
 # set window transparency
 exec --no-startup-id picom 
@@ -42,8 +39,9 @@ bindsym $mod+q kill
 bindsym $alt+F4 kill
 
 # start rofi
-bindsym $mod+d exec rofi -show drun -font "Bitstromwera Nerd Font 10" -show-icons -icon-theme "Papirus"  -lines 10 -width 40 -padding 50 -hide-scrollbar
+bindsym $mod+d exec rofi -show drun -font "Bitstromwera Nerd Font 10" -show-icons -icon-theme "Papirus"  -lines 8 -width 30 -padding 50 -hide-scrollbar
 bindsym $mod+Shift+d exec rofi -show run
+
 
 #clipmenu
 bindsym $mod+shift+v exec clipmenu -i -fn Terminus:size=10 -nb '#1A1826' -nf '#839496' -sb '#100E17' -sf '#93a1a1'

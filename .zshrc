@@ -75,11 +75,13 @@ eval "$(zoxide init zsh)"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-
 source $ZSH/oh-my-zsh.sh
 
 #aliases
 # nvim
 alias nv="nvim"
+
+#minecraft 
+alias minecraft="java -jar /home/felipe-gsilva/Downloads/TLauncher.v10/TLauncher.jar"
 
 export ZSH=$HOME/.oh-my-zsh
