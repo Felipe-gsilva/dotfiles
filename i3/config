@@ -25,6 +25,8 @@ exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.jpg
 # set window transparency
 exec --no-startup-id picom 
 
+exec --no-startup-id redshift-qt -l -55:-10
+
 # start clipmenud
 exec clipmenud
 

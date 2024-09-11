@@ -82,6 +82,6 @@ source $ZSH/oh-my-zsh.sh
 alias nv="nvim"
 
 #minecraft 
-alias minecraft="java -jar /home/felipe-gsilva/Downloads/TLauncher.v10/TLauncher.jar"
+alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLauncher.jar"
 
 export ZSH=$HOME/.oh-my-zsh
