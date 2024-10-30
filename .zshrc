@@ -85,3 +85,6 @@ alias nv="nvim"
 alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLauncher.jar"
 
 export ZSH=$HOME/.oh-my-zsh
+
+# Created by `pipx` on 2024-10-08 20:29:41
+export PATH="$PATH:/home/felipe-gsilva/.local/bin"
