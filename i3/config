@@ -31,8 +31,8 @@ exec --no-startup-id redshift-qt -l -55:-10
 exec clipmenud
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
-bindsym $alt+Control+t exec alacritty
+bindsym $mod+Return exec kitty 
+bindsym $alt+Control+t exec kitty
 
 # kill focused window
 bindsym $mod+q kill 
