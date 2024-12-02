@@ -30,6 +30,9 @@ exec --no-startup-id redshift-qt -l -55:-10
 # start clipmenud
 exec clipmenud
 
+# exec caps2esc
+exec --no-startup-id caps2esc -m 0
+
 # start a terminal
 bindsym $mod+Return exec kitty 
 bindsym $alt+Control+t exec kitty
