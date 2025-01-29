@@ -14,10 +14,10 @@ font pango:FontAwesome 9
 floating_modifier $mod
 
 # monitors
-exec --no-startup-id xrandr --output eDP --mode 1920x1080 
+exec  xrandr --output HDMI-0 --mode 1920x1080 --rate 144
 
 # layout
-exec --no-startup-id setxkbmap br
+exec --no-startup-id setxkbmap us 
 
 #set background
 exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.png
@@ -30,9 +30,12 @@ exec --no-startup-id redshift-qt -l -55:-10
 # start clipmenud
 exec clipmenud
 
+# exec caps2esc
+exec --no-startup-id caps2esc -m 0
+
 # start a terminal
-bindsym $mod+Return exec kitty 
-bindsym $alt+Control+t exec kitty
+bindsym $mod+Return exec kitty --config ~/dotfiles/kitty/kitty.conf
+bindsym $alt+Control+t exec kitty --config ~/dotfiles/kitty/kitty.conf
 
 # kill focused window
 bindsym $mod+q kill 

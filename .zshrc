@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="sobole" # set by `omz`
+ZSH_THEME="spaceship" # set by `omz`
 
 #zoxide
 eval "$(zoxide init zsh)"
@@ -85,12 +85,4 @@ alias nv="nvim"
 alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLauncher.jar"
 
 export ZSH=$HOME/.oh-my-zsh
-
-# Created by `pipx` on 2024-10-08 20:29:41
 export PATH="$PATH:/home/felipe-gsilva/.local/bin"
-
-# android dev
-export ANDROID_HOME=/opt/android-sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
