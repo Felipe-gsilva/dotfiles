@@ -88,3 +88,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Created by `pipx` on 2024-10-08 20:29:41
 export PATH="$PATH:/home/felipe-gsilva/.local/bin"
+
+# android dev
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
