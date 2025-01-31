@@ -86,4 +86,3 @@ alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLa
 
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:/home/felipe-gsilva/.local/bin"
-. "/home/felipe-gsilva/.deno/env"
