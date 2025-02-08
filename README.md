@@ -1,12 +1,15 @@
 # dotfiles
 
-this is properly working only for arch linux and you must have firstly yay installed
+this is properly working only for arch linux
 
-if you don't, run
-
-> sudo pacman -S yay
+## installing 
 
 just give the install.sh permissions 
-> chmod +x install.sh
+```bash
 
-and run it
+$ chmod +x install.sh
+
+$ ./install.sh
+
+```
+
