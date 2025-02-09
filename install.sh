@@ -44,8 +44,8 @@ echo -n "Install recommended packages? (Y/n): "
 read confirm
 if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
-  yay -S --noconfirm git nvim composer kitty rofi-wayland tmux \
-                     pulse waybar hyprpaper hyprland pavucontrol neofetch \
+  yay -S --noconfirm git neovim composer kitty rofi-wayland tmux \
+                     pulseaudio waybar hyprpaper hyprland pavucontrol neofetch \
                      wl-clipboard
 fi
 
