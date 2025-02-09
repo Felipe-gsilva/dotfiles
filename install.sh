@@ -16,7 +16,6 @@ else
       echo "zsh installed and setting as default"
       chsh -s "$(which zsh)"
     else 
-      # Install zsh using yay (AUR helper)
       echo "installing zsh"
       yay -S zsh
       chsh -s "$(which zsh)"
@@ -40,21 +39,58 @@ fi
 echo "installing general packages"
 yay -S git nvim composer kitty rofi-wayland tmux pulse waybar hyprpaper hyprland pavucontrol neofetch wl-clipboard
 
-ln -sf "$PWD/nvim" "$HOME/.config/nvim"
-ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
-ln -sf "$PWD/.oh-my-zsh" "$HOME/.oh-my-zsh"
-ln -sf "$PWD/kitty" "$HOME/.config/kitty"
-ln -sf "$PWD/composer" "$HOME/.config/composer"
-ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-ln -sf "$PWD/neofetch" "$HOME/.config/neofetch"
-ln -sf "$PWD/rofi" "$HOME/.config/rofi"
-# ln -sf "$PWD/flameshot" "$HOME/.config/flameshot"
-ln -sf "$PWD/copyq" "$HOME/.config/copyq"
-ln -sf "$PWD/tmux" "$HOME/.config/tmux"
-ln -sf "$PWD/tmux.conf" "$HOME/tmux.conf"
-ln -sf "$PWD/spotify-player" "$HOME/.config/spotify-player"
-ln -sf "$PWD/pulse" "$HOME/.config/pulse"
-#ln -sf "$PWD/polybar" "$HOME/.config/polybar"
-ln -sf "$PWD/waybar" "$HOME/.config/waybar"
-ln -sf "$PWD/pavucontrol.ini" "$HOME/.config/pavucontrol.ini"
+if ! [[-d "$HOME/.config/nvim"]]; then
+  ln -sf "$PWD/nvim" "$HOME/.config/nvim"
+fi
+
+if ! [[-d "$HOME/.zshrc"]]; then
+  ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
+fi
+
+if ! [[-d "$HOME/.oh-my-zsh"]]; then
+  ln -sf "$PWD/.oh-my-zsh" "$HOME/.oh-my-zsh"
+fi
+
+if ! [[-d "$HOME/.config/kitty"]]; then
+  ln -sf "$PWD/kitty" "$HOME/.config/kitty"
+fi
+
+if ! [[-d "$HOME/.config/composer"]]; then
+  ln -sf "$PWD/composer" "$HOME/.config/composer"
+fi
+
+if ! [[-d "$HOME/.config/hypr"]]; then
+  ln -sf "$PWD/hypr" "$HOME/.config/hypr"
+fi
+
+if ! [[-d "$HOME/.config/neofetch"]]; then
+  ln -sf "$PWD/neofetch" "$HOME/.config/neofetch"
+fi
+
+if ! [[-d "$HOME/.config/rofi"]]; then
+  ln -sf "$PWD/rofi" "$HOME/.config/rofi"
+  # ln -sf "$PWD/flameshot" "$HOME/.config/flameshot"
+fi
+#
+if ! [[-d "$HOME/.config/copyq"]]; then
+  ln -sf "$PWD/copyq" "$HOME/.config/copyq"
+fi
+
+if ! [[-d "$HOME/.config/nvim"]]; then
+  ln -sf "$PWD/tmux" "$HOME/.config/tmux"
+fi
+
+if ! [[-d "$HOME/tmux.conf"]]; then
+  ln -sf "$PWD/tmux.conf" "$HOME/tmux.conf"
+fi
+
+if ! [[-d "$HOME/.config/pulse"]]; then
+  ln -sf "$PWD/pulse" "$HOME/.config/pulse"
+fi
+
+if ! [[-d "$HOME/.config/waybar"]]; then
+  #ln -sf "$PWD/polybar" "$HOME/.config/polybar"
+  ln -sf "$PWD/waybar" "$HOME/.config/waybar"
+fi
+
 echo "config files linked"
