@@ -1,96 +1,79 @@
 #!/bin/zsh
 
-if [[ "$(which yay)" ] != "sbin/yay"]; then
-  echo "installing yay"
-  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+# Check if yay is installed
+if ! command -v yay &>/dev/null; then
+  echo "Installing yay..."
+  sudo pacman -S --needed git base-devel
+  git clone https://aur.archlinux.org/yay.git
+  cd yay || exit
+  makepkg -si
+  cd ..
+  rm -rf yay
   yay -Y --gendb
   yay -Syu --devel
   yay -Y --devel --save
-else   
-  # Check if the current shell is zsh
-  if [[ "$(echo $SHELL)" == "/usr/bin/zsh" ]]; then
-    echo "zsh found!"
-  else 
-    # Check if zsh is installed
-    if [[ "$(which zsh)" == "/usr/bin/zsh" ]]; then
-      echo "zsh installed and setting as default"
-      chsh -s "$(which zsh)"
-    else 
-      echo "installing zsh"
-      yay -S zsh
-      chsh -s "$(which zsh)"
-    fi
-  fi
-  echo "zsh installed and set as default"
+else
+  echo "yay is already installed."
 fi
 
-# Check if oh-my-zsh is installed
+# Check if the default shell is zsh
+if [[ $SHELL == */zsh ]]; then
+  echo "zsh is already the default shell."
+else
+  # Check if zsh is installed
+  if ! command -v zsh &>/dev/null; then
+    echo "Installing zsh..."
+    yay -S zsh --noconfirm
+  fi
+  echo "Setting zsh as the default shell..."
+  chsh -s "$(command -v zsh)"
+fi
+
+# Install oh-my-zsh 
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
-  echo "oh-my-zsh found!"
-else 
-  echo "installing oh-my-zsh"
+  echo "oh-my-zsh is already installed."
+else
+  echo "Installing oh-my-zsh..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-if ! [[ -d "$HOME/.config" ]]; then
-  echo "$HOME/.config directory does not exist, creating and linking config files"
-  mkdir -p "$HOME/.config"
+
+# Ensure ~/.config exists
+mkdir -p "$HOME/.config"
+
+echo -n "Install recommended packages? (Y/n): " 
+read confirm
+if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
+  echo "Installing general packages..."
+  yay -S --noconfirm git nvim composer kitty rofi-wayland tmux \
+                     pulse waybar hyprpaper hyprland pavucontrol neofetch \
+                     wl-clipboard
 fi
 
-echo "installing general packages"
-yay -S git nvim composer kitty rofi-wayland tmux pulse waybar hyprpaper hyprland pavucontrol neofetch wl-clipboard
+typeset -A CONFIG_PATHS
+CONFIG_PATHS=(
+  "nvim" "$HOME/.config/nvim"
+  ".zshrc" "$HOME/.zshrc"
+  ".oh-my-zsh" "$HOME/.oh-my-zsh"
+  "kitty" "$HOME/.config/kitty"
+  "composer" "$HOME/.config/composer"
+  "hypr" "$HOME/.config/hypr"
+  "neofetch" "$HOME/.config/neofetch"
+  "rofi" "$HOME/.config/rofi"
+  "copyq" "$HOME/.config/copyq"
+  "tmux" "$HOME/.config/tmux"
+  "tmux.conf" "$HOME/.tmux.conf"
+  "pulse" "$HOME/.config/pulse"
+  "waybar" "$HOME/.config/waybar"
+)
 
-if ! [[-d "$HOME/.config/nvim"]]; then
-  ln -sf "$PWD/nvim" "$HOME/.config/nvim"
-fi
+# Link config files
+echo "Linking configuration files..."
+for key in ${(k)CONFIG_PATHS}; do
+  target="${CONFIG_PATHS[$key]}"
+  if [[ ! -e "$target" ]]; then
+    ln -sf "$PWD/$key" "$target"
+    echo "Linked $key -> $target"
+  fi
+done
 
-if ! [[-d "$HOME/.zshrc"]]; then
-  ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
-fi
-
-if ! [[-d "$HOME/.oh-my-zsh"]]; then
-  ln -sf "$PWD/.oh-my-zsh" "$HOME/.oh-my-zsh"
-fi
-
-if ! [[-d "$HOME/.config/kitty"]]; then
-  ln -sf "$PWD/kitty" "$HOME/.config/kitty"
-fi
-
-if ! [[-d "$HOME/.config/composer"]]; then
-  ln -sf "$PWD/composer" "$HOME/.config/composer"
-fi
-
-if ! [[-d "$HOME/.config/hypr"]]; then
-  ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-fi
-
-if ! [[-d "$HOME/.config/neofetch"]]; then
-  ln -sf "$PWD/neofetch" "$HOME/.config/neofetch"
-fi
-
-if ! [[-d "$HOME/.config/rofi"]]; then
-  ln -sf "$PWD/rofi" "$HOME/.config/rofi"
-  # ln -sf "$PWD/flameshot" "$HOME/.config/flameshot"
-fi
-#
-if ! [[-d "$HOME/.config/copyq"]]; then
-  ln -sf "$PWD/copyq" "$HOME/.config/copyq"
-fi
-
-if ! [[-d "$HOME/.config/nvim"]]; then
-  ln -sf "$PWD/tmux" "$HOME/.config/tmux"
-fi
-
-if ! [[-d "$HOME/tmux.conf"]]; then
-  ln -sf "$PWD/tmux.conf" "$HOME/tmux.conf"
-fi
-
-if ! [[-d "$HOME/.config/pulse"]]; then
-  ln -sf "$PWD/pulse" "$HOME/.config/pulse"
-fi
-
-if ! [[-d "$HOME/.config/waybar"]]; then
-  #ln -sf "$PWD/polybar" "$HOME/.config/polybar"
-  ln -sf "$PWD/waybar" "$HOME/.config/waybar"
-fi
-
-echo "config files linked"
+echo "Configuration setup completed."
