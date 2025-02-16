@@ -24,6 +24,7 @@ tooltip {
 #memory,
 #battery,
 #network,
+#disk,
 #pulseaudio {
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
@@ -39,12 +40,16 @@ tooltip {
     all: initial;
     min-width: 0;
     box-shadow: inset 0 -3px transparent;
-    padding: 2px 4px;
+    padding: 4px 6px;
     color: #c7ab7a;
 }
 
 #workspaces button.focused {
     color: #ddc7a1;
+}
+
+#workspaces button.active {
+    color: #dfceae;
 }
 
 #workspaces button.urgent {
@@ -71,6 +76,7 @@ tooltip {
 #cpu,
 #memory,
 #network,
+#disk,
 #pulseaudio {
     background-color: #ddc7a1;
     border: 2px solid #c7ab7a;
