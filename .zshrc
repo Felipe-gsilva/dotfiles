@@ -84,5 +84,9 @@ alias nv="nvim"
 #minecraft 
 alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLauncher.jar"
 
+# pip
+alias pip-env="/home/felipe-gsilva/python/venv/bin/pip"
+
+
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:/home/felipe-gsilva/.local/bin"

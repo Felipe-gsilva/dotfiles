@@ -46,7 +46,7 @@ if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
   yay -S --noconfirm git neovim composer kitty rofi-wayland tmux \
                      pulseaudio waybar hyprpaper hyprland pavucontrol neofetch \
-                     wl-clipboard
+                     wl-clipboard grim slurp 
 fi
 
 typeset -A CONFIG_PATHS
