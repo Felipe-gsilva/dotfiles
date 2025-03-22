@@ -22,6 +22,7 @@
       "cpu",
       "memory",
       "battery",
+      "disk",
       "network",
       "pulseaudio"
     ],
@@ -40,9 +41,14 @@
       "persistent-workspaces": {
         "*": 5, // 5 workspaces by default on every monitor
         "HDMI-A-1": 3 // but only three on HDMI-A-1
+      "spacing": 32,
+      "on-scroll-up": "hyprctl dispatch workspace r+1",
+      "on-scroll-down": "hyprctl dispatch workspace r-1",
+      "persistent-workspaces": {
+        "*": 5, // 5 workspaces by default on every monitor
+        "HDMI-A-1": 5 // but only three on HDMI-A-1
       }
     },
-
     "tray": {
       "spacing": 10,
       "tooltip": false
@@ -52,11 +58,19 @@
       "format": "{:%I:%M %p - %a, %d %b %Y}",
       "tooltip": false
     },
+    "disk": {
+        "interval": 30,
+        "format": "disk {percentage_used}%",
+        "path": "/",
+        "tooltip": true,
+        "unit": "GB",
+        "tooltip-format":  "Available {free} of {total}"
+    },
 
     "cpu": {
       "format": "cpu {usage}%",
       "interval": 2,
-
+      "on-click": "gnome-system-monitor",
       "states": {
         "critical": 90
       }
@@ -65,7 +79,7 @@
     "memory": {
       "format": "mem {percentage}%",
       "interval": 2,
-
+      "on-click": "gnome-system-monitor",
       "states": {
         "critical": 80
       }
