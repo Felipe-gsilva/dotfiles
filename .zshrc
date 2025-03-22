@@ -90,3 +90,7 @@ alias pip-env="/home/felipe-gsilva/python/venv/bin/pip"
 
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:/home/felipe-gsilva/.local/bin"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
