@@ -14,13 +14,13 @@ font pango:FontAwesome 9
 floating_modifier $mod
 
 # monitors
-exec  xrandr --output HDMI-0 --mode 1920x1080 --rate 144
+exec  xrandr --output HDMI-0 --mode 1920x1080 --rate 60
 
 # layout
 exec --no-startup-id setxkbmap us 
 
 #set background
-exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/bg.png
+exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/hong-kong-night.jpg
 
 # set window transparency
 exec --no-startup-id picom 
@@ -35,7 +35,10 @@ exec --no-startup-id caps2esc -m 0
 
 # start a terminal
 bindsym $mod+Return exec kitty --config ~/dotfiles/kitty/kitty.conf
+
 bindsym $alt+Control+t exec kitty --config ~/dotfiles/kitty/kitty.conf
+
+bindsym $mod+space exec ~/.config/i3/toggle_layout.sh
 
 # kill focused window
 bindsym $mod+q kill 
@@ -45,6 +48,7 @@ bindsym $alt+F4 kill
 
 # start rofi
 bindsym $mod+d exec rofi -show drun -font "Bitstromwera Nerd Font 10" -show-icons -icon-theme "Papirus"  -lines 8 -width 30 -padding 50 -hide-scrollbar
+
 bindsym $mod+Shift+d exec rofi -show run
 
 
@@ -93,10 +97,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shifht+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -206,7 +207,7 @@ client.placeholder      $fg    $fg     $fg  $white
 client.urgent           $red   $red    $fg  $white
 
 # Starts polybar
-exec_always --no-startup-id $HOME/.config/polybar/launcher.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Always float certain windows
 for_window [class="Pavucontrol"] floating enable
