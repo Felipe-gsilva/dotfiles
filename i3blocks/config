@@ -1,0 +1,65 @@
+# Global settings
+separator=true
+separator_block_width=20
+markup=pango
+
+# Volume (PulseAudio)
+[volume-pulse]
+label=🔊 
+command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"; else pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'; fi
+interval=5
+signal=1
+
+# Music (Spotify) - FIXED: Single-line command
+[music]
+label=🎵 
+command=playerctl -p spotify metadata --format '{{title}}' || echo "No music"
+interval=5
+
+# CPU
+[cpu]
+label=💾 
+command=iostat -c | sed '4q;d' | awk '{ printf "%.1f%%", 100 - $6 }'
+interval=5
+
+# Memory
+[memory]
+label=🧠 
+command=free -mh --si | awk '/^Mem:/ { print $3 "/" $2 " (" int($3/$2 * 100) "%%" }'
+interval=5
+
+# Network
+[network]
+label=🌐 
+command=sh -c 'if [ "$(nmcli -t -f STATE g)" = "connected" ]; then echo "$(nmcli -t -f active,ssid dev wifi | grep '"'^yes'"' | cut -d: -f2) ($(ip route get 1 | awk '"'{print $7}'"'))"; else echo "Offline"; fi'
+interval=30
+
+# Battery
+[battery]
+label=🔋 
+command=upower -i $(upower -e | grep BAT) | awk '/percentage/ {print $2}'
+interval=30
+
+# Disk
+[disk]
+label=💽 
+command=df -h / | awk 'NR==2 {print $4 " free (" $5 " used)"}'
+interval=60
+
+# Temperature
+[temperature]
+label=🌡 
+command=sensors | awk '/Package id 0/ {print $4}' | sed 's/+//;s/°C//'
+interval=5
+
+# Updates
+[updates]
+label=🔄 
+command=checkupdates | wc -l
+interval=3600
+
+# Date/Time
+[date]
+label=📅 
+command=date '+%a %d-%m-%Y %H:%M:%S'
+interval=1
