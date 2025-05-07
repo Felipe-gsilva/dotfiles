@@ -44,9 +44,9 @@ echo -n "Install recommended packages? (Y/n): "
 read confirm
 if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
-  yay -S --noconfirm git neovim composer kitty rofi-wayland tmux \
-                     pulseaudio waybar hyprpaper hyprland pavucontrol neofetch \
-                     wl-clipboard grim slurp 
+  yay -S --noconfirm git neovim kitty rofi tmux picom \
+                     pulseaudio i3 i32blocks i3status pavucontrol fastfetch \
+                     flameshot
 fi
 
 typeset -A CONFIG_PATHS
@@ -56,14 +56,13 @@ CONFIG_PATHS=(
   ".oh-my-zsh" "$HOME/.oh-my-zsh"
   "kitty" "$HOME/.config/kitty"
   "composer" "$HOME/.config/composer"
-  "hypr" "$HOME/.config/hypr"
-  "neofetch" "$HOME/.config/neofetch"
+  "i3" "$HOME/.config/i3"
+  "i3blocks" "$HOME/.config/i3blocks"
+  "i3status" "$HOME/.config/i3status"
   "rofi" "$HOME/.config/rofi"
-  "copyq" "$HOME/.config/copyq"
   "tmux" "$HOME/.config/tmux"
   "tmux.conf" "$HOME/.tmux.conf"
   "pulse" "$HOME/.config/pulse"
-  "waybar" "$HOME/.config/waybar"
 )
 
 # Link config files

@@ -7,8 +7,7 @@ set $mod Mod4
 set $alt Mod1 
 
 # fonts
-font pango:Bitstromwera Nerd Font 8
-font pango:FontAwesome 9
+font pango:JetBrainsMono Nerd Font, Noto Color Emoji 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -25,7 +24,7 @@ exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/hong-kong-nig
 # set window transparency
 exec --no-startup-id picom 
 
-exec --no-startup-id redshift-qt -l -55:-10
+exec --no-startup-id wlsunset -l -55 -L -10
 
 # start clipmenud
 exec clipmenud
@@ -53,7 +52,7 @@ bindsym $mod+Shift+d exec rofi -show run
 
 
 #clipmenu
-bindsym $mod+shift+v exec clipmenu -i -fn Terminus:size=10 -nb '#1A1826' -nf '#839496' -sb '#100E17' -sf '#93a1a1'
+bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # change focus
 bindsym $mod+h focus left
@@ -97,7 +96,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shifht+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -133,9 +132,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# set sound control on fn keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1.0
+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
 
 #set volume control 
 bindsym $mod+Shift+s exec --no-startup-id pavucontrol
@@ -144,8 +146,8 @@ bindsym $mod+Shift+s exec --no-startup-id pavucontrol
 bindsym $mod+Shift+w exec --no-startup-id nmtui
 
 # set brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -200,14 +202,22 @@ set $cyan    #6e6765
 set $white   #837e81
 
 # class                 border backgr. text indicator
-client.focused          $udg    $bg     $fg  $white
+client.focused          $blue   $bg     $fg  $white 
 client.unfocused        $fg    $fg     $fg  $white
 client.focused_inactive $fg    $bg     $fg  $white
 client.placeholder      $fg    $fg     $fg  $white
 client.urgent           $red   $red    $fg  $white
 
 # Starts polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+bar {
+  position top
+  height 24
+  status_command i3blocks
+   
+  strip_workspace_numbers yes
+  bindsym button4 nop
+  bindsym button5 nop
+}
 
 # Always float certain windows
 for_window [class="Pavucontrol"] floating enable
