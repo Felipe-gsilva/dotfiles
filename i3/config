@@ -19,7 +19,7 @@ exec  xrandr --output HDMI-0 --mode 1920x1080 --rate 60
 exec --no-startup-id setxkbmap us 
 
 #set background
-exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/hong-kong-night.jpg
+exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/autumn.jpg
 
 # set window transparency
 exec --no-startup-id picom 

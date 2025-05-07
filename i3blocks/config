@@ -1,41 +1,35 @@
 # Global settings
 separator=true
-separator_block_width=22
+separator_block_width=10  # Reduce spacing for text
 markup=pango
 
-# Volume (PulseAudio)
 [volume-pulse]
-label=🔊 
+label=VOL: 
 command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"; else pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'; fi
 interval=5
 signal=1
 
-# Music (Spotify) - FIXED: Single-line command
 [music]
-label=🎵 
+label=♫ 
 command=playerctl -p spotify metadata --format '{{title}}' || echo "No music"
 interval=5
 
-# Memory
 [memory]
-label=🧠: 
-command=free -mh --si | awk '/^Mem:/ { print $3 "/" $2 }'
+label=MEM: 
+command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
 interval=5
 
-# Battery
 [battery]
-label=🔋 
-command=upower -i $(upower -e | grep BAT) | awk '/percentage/ {print $2}'
+label=BAT: 
+command=~/.config/i3blocks/battery.sh
 interval=30
 
-# Disk
 [disk]
-label=💽 
+label=DISK: 
 command=df -h / | awk 'NR==2 {print $4 " free (" $5 " used)"}'
 interval=60
 
-# Date/Time
 [date]
-label=📅 
+label=DATE: 
 command=date '+%a %d-%m-%Y %H:%M:%S'
 interval=1
