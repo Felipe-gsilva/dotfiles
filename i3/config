@@ -54,6 +54,8 @@ bindsym $mod+Shift+d exec rofi -show run
 #clipmenu
 bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+# wifi
+bindsym $mod+Shift+w exec sh $HOME/.config/rofi/rofi-wifi-menu/rofi-wifi-menu.sh
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -142,9 +144,6 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
 #set volume control 
 bindsym $mod+Shift+s exec --no-startup-id pavucontrol
 
-# set wifi control
-bindsym $mod+Shift+w exec --no-startup-id nmtui
-
 # set brightness control
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
@@ -211,7 +210,7 @@ client.urgent           $red   $red    $fg  $white
 # Starts polybar
 bar {
   position top
-  height 24
+  height 28
   status_command i3blocks
    
   strip_workspace_numbers yes
