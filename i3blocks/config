@@ -1,33 +1,35 @@
+# Global settings
 separator=true
-separator_block_width=20
-
-[short_text]
-command=xdotool getwindowfocus getwindowname
-interval=1
-
-[funky]
-full_text=<span foreground= "#8EBABF"size="large">Freelipe Kapudo Pc </span> 
+separator_block_width=10  # Reduce spacing for text
 markup=pango
 
+[volume-pulse]
+label=VOL: 
+command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"; else pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'; fi
+interval=5
+signal=1
+
 [music]
-label=📻: 
-command=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n '/title/{n;p}' | cut -d '"' -f 2
+label=♫ 
+command=playerctl -p spotify metadata --format '{{title}}' || echo "No music"
 interval=5
 
-[cpu]
-label=💾: 
-command=iostat -c | sed '4q;d' | awk '{ print 100 - $6 "%" }'
+[memory]
+label=MEM: 
+command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
 interval=5
 
 [battery]
-#label=BAT
-command=acpi
-label=⚡
-instance=0
-interval=2
+label=BAT: 
+command=~/.config/i3blocks/battery.sh
+interval=30
+
+[disk]
+label=DISK: 
+command=df -h / | awk 'NR==2 {print $4 " free (" $5 " used)"}'
+interval=60
 
 [date]
-label=📅: 
-command=date '+%d-%m-%Y   %H:%M:%S'
+label=DATE: 
+command=date '+%a %d-%m-%Y %H:%M:%S'
 interval=1
-
