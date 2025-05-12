@@ -19,18 +19,28 @@ exec  xrandr --output HDMI-0 --mode 1920x1080 --rate 60
 exec --no-startup-id setxkbmap us 
 
 #set background
-exec --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/autumn.jpg
+exec_always --no-startup-id feh --bg-scale /home/felipe-gsilva/.config/i3/autumn.jpg
 
 # set window transparency
-exec --no-startup-id picom 
+exec_always --no-startup-id picom --config "$HOME/.config/picom/picom.conf"
 
 exec --no-startup-id wlsunset -l -55 -L -10
 
 # start clipmenud
-exec clipmenud
+exec --no-startup-id greenclip daemon
 
 # exec caps2esc
 exec --no-startup-id caps2esc -m 0
+
+exec --no-startup-id dunst
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1  # Policykit agent
+
+exec --no-startup-id nm-applet
+
+# gaps
+bindsym $mod+Shift+g gaps inner current toggle 10
+bindsym $mod+Ctrl+g gaps outer current toggle 10
 
 # start a terminal
 bindsym $mod+Return exec kitty --config ~/dotfiles/kitty/kitty.conf
@@ -56,6 +66,10 @@ bindsym $mod+shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard
 
 # wifi
 bindsym $mod+Shift+w exec sh $HOME/.config/rofi/rofi-wifi-menu/rofi-wifi-menu.sh
+
+# file explorer
+bindsym $mod+e exec dolphin
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -95,7 +109,7 @@ bindsym $mod+f fullscreen
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -132,7 +146,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1.0
@@ -148,28 +162,19 @@ bindsym $mod+Shift+s exec --no-startup-id pavucontrol
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  bindsym h resize shrink width 10px
+  bindsym j resize grow height 10px
+  bindsym k resize shrink height 10px
+  bindsym l resize grow width 10px
+  # Keep arrow keys as fallback
+  bindsym Left  resize shrink width 10px
+  bindsym Down  resize grow height 10px
+  bindsym Up    resize shrink height 10px
+  bindsym Right resize grow width 10px
+  # Exit
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 # print with flameshot
@@ -201,7 +206,7 @@ set $cyan    #6e6765
 set $white   #837e81
 
 # class                 border backgr. text indicator
-client.focused          $blue   $bg     $fg  $white 
+client.focused          $fg   $bg     $fg  $white 
 client.unfocused        $fg    $fg     $fg  $white
 client.focused_inactive $fg    $bg     $fg  $white
 client.placeholder      $fg    $fg     $fg  $white
@@ -221,3 +226,6 @@ bar {
 # Always float certain windows
 for_window [class="Pavucontrol"] floating enable
 for_window [class="polybar"] border pixel 0
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="firefox" title="Library"] floating enable

@@ -62,6 +62,7 @@ CONFIG_PATHS=(
   "rofi" "$HOME/.config/rofi"
   "tmux" "$HOME/.config/tmux"
   "tmux.conf" "$HOME/.tmux.conf"
+  "picom" "$HOME/.config/picom"
   "pulse" "$HOME/.config/pulse"
 )
 
