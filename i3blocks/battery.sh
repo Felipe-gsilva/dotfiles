@@ -14,4 +14,8 @@ if [ "$BATTERY_STATE" = "discharging" ] && [ "$BATTERY_PERCENTAGE" -le $WARNING_
 fi
 
 # Return the battery percentage for i3blocks display
-echo "$BATTERY_PERCENTAGE%"
+if [ "$BATTERY_PERCENTAGE" -le $WARNING_LEVEL ]; then
+  echo "<span color='#FF0000'>$BATTERY_PERCENTAGE%</span>"
+else
+  echo "$BATTERY_PERCENTAGE%"
+fi
