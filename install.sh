@@ -44,9 +44,10 @@ echo -n "Install recommended packages? (Y/n): "
 read confirm
 if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
-  yay -S --noconfirm git neovim kitty rofi tmux picom \
-                     pulseaudio i3 i32blocks i3status pavucontrol fastfetch \
-                     flameshot
+  yay -S --noconfirm git neovim kitty rofi tmux picom greenclip \
+                     pulseaudio i3 i3blocks i3status pavucontrol fastfetch \
+                     flameshot zathura zoxide zen-browser-bin \
+		     spotify feh yarn luarocks ttf-jetbrains-mono
 fi
 
 typeset -A CONFIG_PATHS
