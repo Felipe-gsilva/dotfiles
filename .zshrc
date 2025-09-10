@@ -81,9 +81,6 @@ source $ZSH/oh-my-zsh.sh
 # nvim
 alias nv="nvim"
 
-#minecraft 
-alias minecraft="java -jar /home/felipe-gsilva/Downloads/Games/TLauncher.v10/TLauncher.jar"
-
 # pip
 alias pip-env="/home/felipe-gsilva/python/venv/bin/pip"
 
@@ -95,4 +92,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt6ct"
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

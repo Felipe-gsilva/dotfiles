@@ -1,6 +1,6 @@
 # Global settings
 separator=true
-separator_block_width=10  # Reduce spacing for text
+separator_block_width=10
 markup=pango
 
 [volume-pulse]
@@ -8,11 +8,6 @@ label=VOL:
 command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"; else pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'; fi
 interval=5
 signal=1
-
-[music]
-label=♫ 
-command=playerctl -p spotify metadata --format '{{title}}' || echo "No music"
-interval=5
 
 [memory]
 label=MEM: 
