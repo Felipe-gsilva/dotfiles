@@ -11,7 +11,7 @@ signal=1
 
 [memory]
 label=MEM: 
-command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
+command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)\n", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
 interval=5
 
 [battery]
