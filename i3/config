@@ -6,7 +6,10 @@
 set $mod Mod4
 set $alt Mod1 
 
-# fonts
+
+# set cpu performance mode
+exec --no-startup-id echo "powersave" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
 font pango:JetBrainsMono Nerd Font, Noto Color Emoji 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position

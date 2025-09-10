@@ -1,6 +1,6 @@
 # Global settings
 separator=true
-separator_block_width=10  # Reduce spacing for text
+separator_block_width=10
 markup=pango
 
 [volume-pulse]
@@ -9,14 +9,9 @@ command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"
 interval=5
 signal=1
 
-[music]
-label=♫ 
-command=playerctl -p spotify metadata --format '{{title}}' || echo "No music"
-interval=5
-
 [memory]
 label=MEM: 
-command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
+command=awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1fG/%.1fG (%.0f%%)\n", (t-a)/1048576, t/1048576, (1-a/t)*100}' /proc/meminfo
 interval=5
 
 [battery]
