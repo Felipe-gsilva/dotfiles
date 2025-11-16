@@ -93,9 +93,14 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - zsh)"
 
 export QT_QPA_PLATFORMTHEME="qt6ct"
-# Install Ruby Gems to ~/gems
+# Install Ruby Gems to ~/gems and colmap
 export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+# Source nerfstudio autocompletions.
+if ! command -v compdef &> /dev/null; then
+    autoload -Uz compinit
+    compinit
+fi
