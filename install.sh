@@ -44,10 +44,10 @@ echo -n "Install recommended packages? (Y/n): "
 read confirm
 if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
-  yay -S --noconfirm git neovim kitty rofi tmux picom greenclip \
-                     pulseaudio i3 i3blocks i3status pavucontrol fastfetch \
-                     flameshot zathura zoxide zen-browser-bin \
-		     spotify feh yarn luarocks ttf-jetbrains-mono
+  yay -S --noconfirm git neovim kitty rofi tmux picom discord \
+                     pulseaudio i3 polybar pavucontrol fastfetch \
+                     flameshot zathura zoxide firefox libreoffice \
+                     feh luarocks ttf-jetbrains-mono
 fi
 
 typeset -A CONFIG_PATHS
@@ -58,8 +58,8 @@ CONFIG_PATHS=(
   "kitty" "$HOME/.config/kitty"
   "composer" "$HOME/.config/composer"
   "i3" "$HOME/.config/i3"
-  "i3blocks" "$HOME/.config/i3blocks"
   "i3status" "$HOME/.config/i3status"
+  "polybar" "$HOME/.config/polybar"
   "rofi" "$HOME/.config/rofi"
   "tmux" "$HOME/.config/tmux"
   "tmux.conf" "$HOME/.tmux.conf"

@@ -212,15 +212,7 @@ client.placeholder      $fg    $fg     $fg  $white
 client.urgent           $red   $red    $fg  $white
 
 # Starts polybar
-bar {
-  position top
-  height 28
-  status_command i3blocks
-   
-  strip_workspace_numbers yes
-  bindsym button4 nop
-  bindsym button5 nop
-}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Always float certain windows
 for_window [class="Pavucontrol"] floating enable

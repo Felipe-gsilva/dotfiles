@@ -3,6 +3,11 @@ separator=true
 separator_block_width=10
 markup=pango
 
+[date]
+label=DATE: 
+command=date '+%a %d-%m-%Y %H:%M:%S'
+interval=1
+
 [volume-pulse]
 label=VOL: 
 command=if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then echo "MUTED"; else pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'; fi
@@ -18,13 +23,3 @@ interval=5
 label=BAT: 
 command=~/.config/i3blocks/battery.sh
 interval=30
-
-[disk]
-label=DISK: 
-command=df -h / | awk 'NR==2 {print $4 " free (" $5 " used)"}'
-interval=60
-
-[date]
-label=DATE: 
-command=date '+%a %d-%m-%Y %H:%M:%S'
-interval=1
