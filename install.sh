@@ -47,7 +47,9 @@ if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   yay -S --noconfirm git neovim kitty rofi tmux picom discord \
                      pulseaudio i3 polybar pavucontrol fastfetch \
                      flameshot zathura zoxide firefox libreoffice \
-                     feh luarocks ttf-jetbrains-mono
+                     feh luarocks ttf-jetbrains-mono thunar \
+                     thunar-archive-plugin thunar-media-tags-plugin \
+                     tumbler 
 fi
 
 typeset -A CONFIG_PATHS
