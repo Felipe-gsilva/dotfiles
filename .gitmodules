@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/Felipe-gsilva/nvim-config
+[submodule ".oh-my-zsh/sobole-zsh-theme"]
+	path = .oh-my-zsh/sobole-zsh-theme
+	url = https://github.com/sobolevn/sobole-zsh-theme.git
