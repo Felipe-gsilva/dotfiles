@@ -4,3 +4,6 @@
 [submodule ".oh-my-zsh/sobole-zsh-theme"]
 	path = .oh-my-zsh/sobole-zsh-theme
 	url = https://github.com/sobolevn/sobole-zsh-theme.git
+[submodule "tmux/plugins/minimal-tmux-status"]
+	path = tmux/plugins/minimal-tmux-status
+	url = https://github.com/niksingh710/minimal-tmux-status
