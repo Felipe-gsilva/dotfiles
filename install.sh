@@ -40,7 +40,7 @@ fi
 # Ensure ~/.config exists
 mkdir -p "$HOME/.config"
 
-echo -n "Install recommended packages? (Y/n): " 
+echo -n "Install recommended packages? (y/N): " 
 read confirm
 if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
   echo "Installing general packages..."
@@ -49,7 +49,7 @@ if [[ "$confirm" =~ ^[yY]([eE][sS])?$ ]]; then
                      flameshot zathura zoxide firefox libreoffice \
                      feh luarocks ttf-jetbrains-mono thunar \
                      thunar-archive-plugin thunar-media-tags-plugin \
-                     tumbler 
+                     tumbler
 fi
 
 typeset -A CONFIG_PATHS
@@ -64,7 +64,7 @@ CONFIG_PATHS=(
   "polybar" "$HOME/.config/polybar"
   "rofi" "$HOME/.config/rofi"
   "tmux" "$HOME/.config/tmux"
-  "tmux.conf" "$HOME/.tmux.conf"
+  "tmux/tmux.conf" "$HOME/.tmux.conf"
   "picom" "$HOME/.config/picom"
   "pulse" "$HOME/.config/pulse"
 )
@@ -78,5 +78,12 @@ for key in ${(k)CONFIG_PATHS}; do
     echo "Linked $key -> $target"
   fi
 done
+
+
+echo -n "Do you want to remap caps with escape? (y/N)"
+read confirm_caps
+if [[ "$confirm_caps" =~ ^[yY]([eE][sS])?$ ]]; then
+  setxkbmap -option "caps:swapescape"
+fi
 
 echo "Configuration setup completed."
