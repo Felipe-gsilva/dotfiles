@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship" # set by `omz`
+ZSH_THEME="spaceship"
 
 #zoxide
 eval "$(zoxide init zsh)"
@@ -73,13 +73,26 @@ eval "$(zoxide init zsh)"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git spaceship-ember spaceship-vi-mode)
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 source $ZSH/oh-my-zsh.sh
+source "$HOME/dotfiles/spaceship.zsh"
 
 #aliases
 # nvim
 alias nv="nvim"
+alias journal="cd ~/dev/personal/notes/ && nv journals/$(date "+%Y_%m_%d").md"
+alias update-ic-server="cd ~/dev/cs/ && \
+  zip ic-update-$(date "+%d-%m-%Y") ic/code/src ic/code/*.py ic/code/pyproject.toml ic/*.sh ic/README.md ic/LICENSE -r && \
+  scp ic-update-$(date "+%d-%m-%Y").zip maq3-lipai@200.19.151.136:/media/maq3-lipai/ba57a429-590e-42e4-a409-af26299e3272/user/Felipe && \
+  rm -rf ic-update-$(date "+%d-%m-%Y")"
 
 # pip
 alias pip-env="/home/felipe-gsilva/python/venv/bin/pip"

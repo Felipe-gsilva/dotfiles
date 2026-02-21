@@ -30,4 +30,6 @@ discord/
 Notion/
 aseprite/
 spotify-player/
-tmux/plugins/tmux-base16-statusline/
+.lsp/
+.clj-kondo/
+cef_user_data
