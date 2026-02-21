@@ -42,6 +42,18 @@ else
   RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# ... existing oh-my-zsh installation block ...
+
+# Install Spaceship Theme
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+if [[ ! -d "$ZSH_CUSTOM/themes/spaceship-prompt" ]]; then
+  echo "Installing Spaceship theme..."
+  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+else
+  echo "Spaceship theme already installed."
+fi
+
 # Ensure ~/.config exists
 mkdir -p "$HOME/.config"
 
