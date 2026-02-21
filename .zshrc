@@ -88,7 +88,8 @@ source "$HOME/dotfiles/spaceship.zsh"
 #aliases
 # nvim
 alias nv="nvim"
-alias journal="cd ~/dev/personal/notes/ && nv journals/$(date "+%Y_%m_%d").md"
+alias journal="cd ~/dev/personal/notes && nv journals/$(date +%Y-%m-%d).md"
+alias tasks="cd ~/dev/personal/notes && nv tasks.md"
 alias update-ic-server="cd ~/dev/cs/ && \
   zip ic-update-$(date "+%d-%m-%Y") ic/code/src ic/code/*.py ic/code/pyproject.toml ic/*.sh ic/README.md ic/LICENSE -r && \
   scp ic-update-$(date "+%d-%m-%Y").zip maq3-lipai@200.19.151.136:/media/maq3-lipai/ba57a429-590e-42e4-a409-af26299e3272/user/Felipe && \
