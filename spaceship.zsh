@@ -47,3 +47,9 @@ SPACESHIP_GCLOUD_SHOW=false
 
 # Speed up git by only checking status when you hit Enter
 SPACESHIP_GIT_STATUS_SHOW=true
+
+SPACESHIP_BUN_SHOW=true
+SPACESHIP_BUN_ASYNC=true
+
+SPACESHIP_PYTHON_SHOW=true
+SPACESHIP_PYTHON_ASYNC=true

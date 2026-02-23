@@ -118,3 +118,5 @@ if ! command -v compdef &> /dev/null; then
     autoload -Uz compinit
     compinit
 fi
+
+eval 'setxkbmap -option "caps:swapescape"'
