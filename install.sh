@@ -50,6 +50,8 @@ if [[ ! -d "$ZSH_CUSTOM/themes/spaceship-prompt" ]]; then
   echo "Installing Spaceship theme..."
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+  git clone https://github.com/spaceship-prompt/spaceship-ember.git $ZSH_CUSTOM/plugins/spaceship-ember
+  git clone https://github.com/spaceship-prompt/spaceship-vi-mode.git $ZSH_CUSTOM/plugins/spaceship-vi-mode
 else
   echo "Spaceship theme already installed."
 fi

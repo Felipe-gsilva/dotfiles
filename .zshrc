@@ -119,4 +119,4 @@ if ! command -v compdef &> /dev/null; then
     compinit
 fi
 
-eval 'setxkbmap -option "caps:swapescape"'
+# eval 'setxkbmap -option "caps:swapescape"'
