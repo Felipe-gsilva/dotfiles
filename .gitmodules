@@ -7,3 +7,6 @@
 [submodule "tmux/plugins/minimal-tmux-status"]
 	path = tmux/plugins/minimal-tmux-status
 	url = https://github.com/niksingh710/minimal-tmux-status
+[submodule "rofi/rofi-wifi-menu"]
+	path = rofi/rofi-wifi-menu
+	url = https://github.com/zbaylin/rofi-wifi-menu
