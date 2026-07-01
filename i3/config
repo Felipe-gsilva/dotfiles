@@ -10,7 +10,7 @@ set $alt Mod1
 # set cpu performance mode
 exec --no-startup-id echo "powersave" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
-font pango:JetBrainsMono Nerd Font, Noto Color Emoji 11
+font pango:Roboto, Noto Color Emoji 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -68,6 +68,9 @@ bindsym $mod+Shift+w exec sh $HOME/.config/rofi/rofi-wifi-menu/rofi-wifi-menu.sh
 
 # file explorer
 bindsym $mod+e exec thunar
+
+# lock screen
+bindsym $alt+l exec betterlockscreen -u /home/felipe-gsilva/.config/i3/autumn.jpg
 
 # change focus
 bindsym $mod+h focus left
@@ -213,6 +216,9 @@ client.urgent           $red   $red    $fg  $white
 
 # Starts polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Starts polkit-gnome for disk mounting on thunar
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Always float certain windows
 for_window [class="Pavucontrol"] floating enable
